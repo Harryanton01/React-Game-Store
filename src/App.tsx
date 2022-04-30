@@ -1,26 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Theme from "./styles/Theme";
+import NavBar from "./components/NavBar/NavBar";
+import GlobalStyles from "./styles/global";
+import games from "./games";
+import { CartStoreContextProvider } from "./store/CartStoreContext/CartStore";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import GameItemList from "./components/GameItemList/GameItemList";
+import CartItemList from "./components/CartItemList/CartItemList";
+import { CurrencyContextProvider } from "./store/CurrencyContext/CurrencyContext";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <CurrencyContextProvider>
+      <CartStoreContextProvider>
+        <Theme>
+          <GlobalStyles />
+          <BrowserRouter>
+            <NavBar />
+            <Routes>
+              <Route path="/" element={<GameItemList games={games} />} />
+              <Route path="/cart" element={<CartItemList />} />
+            </Routes>
+          </BrowserRouter>
+        </Theme>
+      </CartStoreContextProvider>
+    </CurrencyContextProvider>
   );
-}
+};
 
 export default App;
