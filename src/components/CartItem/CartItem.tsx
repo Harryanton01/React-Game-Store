@@ -1,6 +1,6 @@
 import { Row } from "./styles";
 import { CartItemContent } from "./styles";
-import useCartUpdate from "../../hooks/useCartUpdate";
+import useCartUpdate from "../../hooks/useCartUpdate/useCartUpdate";
 import { GameCartType } from "../../shared/types/game";
 import { UpdateGameQuantity } from "../QuantitySelector/QuantitySelector";
 import Text from "../../shared/components/Text/Text";
@@ -15,7 +15,10 @@ const CartItem = ({ game }: { game: GameCartType }) => {
         content={<Text fontBold>{game.description.title}</Text>}
       />
       <Text fontBold>
-        <CurrencyValue amount={game.amount_usd} />
+        <CurrencyValue
+          data-testid={"cart-game-currency"}
+          amount={game.amount_usd}
+        />
       </Text>
       <UpdateGameQuantity
         game={game}

@@ -1,11 +1,12 @@
 export type CurrencySelectors = "EUR" | "USD" | "GBP";
 
 export type CurrencyStateType = {
-  currency: CurrencySelectors;
+  currencyValue: CurrencySelectors;
   currencyMultiplier: number;
+  error: boolean;
 };
 
 export type CurrencyContextType = {
   globalCurrencyState: CurrencyStateType;
-  updateCurrency: (currency: CurrencySelectors) => void;
+  fetchLatestCurrency: (currency: CurrencySelectors) => void;
 };

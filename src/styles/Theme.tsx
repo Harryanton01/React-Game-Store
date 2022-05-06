@@ -11,6 +11,8 @@ const theme = {
     lightBlue: "#1E2131",
     darkBlue: "#151829",
     darkerBlue: "#101320;",
+    errorLight: "#ffe0e0",
+    errorDark: "#f91e1f",
   },
   fontSizes: {
     extraSmall: "11px",

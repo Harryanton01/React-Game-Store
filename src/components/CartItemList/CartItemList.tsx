@@ -1,18 +1,17 @@
 import { Fragment, useContext } from "react";
 import CartItem from "../CartItem/CartItem";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStore";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
 import Text from "../../shared/components/Text/Text";
 import { Row, RowItem, RowItemWrapper } from "./styles";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
 
 const CartItemList = () => {
   const { globalCartState } = useContext(CartStoreContext);
-  console.log(globalCartState.totalAmountUsd);
   return (
     <Fragment>
-      {globalCartState.items.map((gameItem) => {
+      {globalCartState.gameItems.map((gameItem) => {
         return (
-          <RowItemWrapper key={gameItem.id}>
+          <RowItemWrapper data-testid={"cart-item-list"} key={gameItem.id}>
             <RowItem>
               <CartItem game={gameItem} />
             </RowItem>
@@ -22,7 +21,11 @@ const CartItemList = () => {
       <Row>
         {globalCartState.totalAmountUsd > 0 ? (
           <Text fontSize={"large"} fontBold>
-            Total: <CurrencyValue amount={globalCartState.totalAmountUsd} />
+            Total:{" "}
+            <CurrencyValue
+              data-testid={"total-cart-amount"}
+              amount={globalCartState.totalAmountUsd}
+            />
           </Text>
         ) : (
           <Text fontSize={"large"} fontBold>

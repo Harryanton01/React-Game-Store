@@ -6,6 +6,7 @@ type ButtonProps = Pick<
   MuiProps,
   "variant" | "disabled" | "startIcon" | "onClick"
 > & {
+  "data-testid"?: string;
   className?: string;
   children?: ReactNode;
 };
@@ -14,11 +15,13 @@ const Button: FC<ButtonProps> = ({
   variant,
   disabled,
   onClick,
+  "data-testid": dataTestId,
   startIcon,
   children,
 }) => {
   return (
     <StyledButton
+      data-testid={dataTestId}
       className={className}
       variant={variant || "contained"}
       disabled={disabled}

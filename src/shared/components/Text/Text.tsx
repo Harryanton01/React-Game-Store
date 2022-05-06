@@ -7,6 +7,7 @@ export type TextProps = {
   fontSize?: "extraSmall" | "small" | "large";
   fontBold?: boolean;
   className?: string;
+  "data-testid"?: string;
 };
 
 const Text: FC<TextProps> = ({
@@ -15,9 +16,11 @@ const Text: FC<TextProps> = ({
   fontBold,
   className,
   children,
+  "data-testid": dataTestId,
 }) => {
   return (
     <StyledText
+      data-testid={dataTestId}
       secondaryColor={secondaryColor}
       fontSize={fontSize}
       fontBold={fontBold}

@@ -27,25 +27,44 @@ const GameItem = ({ game }: { game: GameType }) => {
   };
 
   return (
-    <Container>
-      <GameImage src={img_src} />
+    <Container data-testid={"game-item-list"}>
+      <GameImage src={img_src} alt={"Game Image"} />
       <ContentWrapper>
         <GameItemContent
-          title={description.release_date.toLocaleString()}
+          title={
+            <span data-testid={"game-date"}>
+              {`Released - ${description.release_date.toLocaleDateString(
+                "en-US",
+                {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                }
+              )}`}
+            </span>
+          }
           content={<Text fontBold>{description.title}</Text>}
           growFlex
         />
         <GameItemContent
           title={"Rating"}
-          content={<StyledRating value={rating} readOnly />}
+          content={
+            <StyledRating data-testid={"rating"} value={rating} readOnly />
+          }
           growFlex
         />
         <GameItemContent
           title={"Tags"}
           content={
             <FlexRow>
-              {tags?.map((tag) => {
-                return <StyledChip key={tag.id} label={tag.tagName} />;
+              {tags.map((tag) => {
+                return (
+                  <StyledChip
+                    key={tag.id}
+                    data-testid={"game-tag"}
+                    label={tag.tagName}
+                  />
+                );
               })}
             </FlexRow>
           }
@@ -63,7 +82,10 @@ const GameItem = ({ game }: { game: GameType }) => {
         />
         <Row>
           <Text fontSize="large" fontBold>
-            <CurrencyValue amount={amount_usd} />
+            <CurrencyValue
+              data-testid={"game-currency-value"}
+              amount={amount_usd}
+            />
           </Text>
         </Row>
         <Row>

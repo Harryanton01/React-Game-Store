@@ -4,12 +4,6 @@ import { IconButton, Row } from "./styles";
 import Text from "../../shared/components/Text/Text";
 import { GameCartType } from "../../shared/types/game";
 
-/**
- *
- * This was a confusing component for me. I know I didn't implement it correctly
- * but I couldn't figure out how to solve this with typescript.
- *
- */
 type QuantitySelectorProps<T = undefined> = {
   onIncrementQuantity: (game?: T) => void;
   onDecrementQuantity: (game?: T) => void;
@@ -25,11 +19,15 @@ export const QuantitySelector = ({
   return (
     <Row>
       <IconButton
+        data-testid={"decrement-quantity-button"}
         startIcon={<RemoveIcon />}
         onClick={onDecrementQuantity.bind(null, undefined)}
       />
-      <Text fontSize={"small"}>{quantity}</Text>
+      <Text data-testid={"quantity-value"} fontSize={"small"}>
+        {quantity}
+      </Text>
       <IconButton
+        data-testid={"increment-quantity-button"}
         startIcon={<AddIcon />}
         onClick={onIncrementQuantity.bind(null, undefined)}
       />
@@ -46,11 +44,15 @@ export const UpdateGameQuantity = ({
   return (
     <Row>
       <IconButton
+        data-testid={"decrement-quantity-button"}
         startIcon={<RemoveIcon />}
         onClick={onDecrementQuantity.bind(null, game)}
       />
-      <Text fontSize={"small"}>{quantity}</Text>
+      <Text data-testid={"quantity-value"} fontSize={"small"}>
+        {quantity}
+      </Text>
       <IconButton
+        data-testid={"increment-quantity-button"}
         startIcon={<AddIcon />}
         onClick={onIncrementQuantity.bind(null, game)}
       />

@@ -5,13 +5,17 @@ import {
 } from "./styles";
 import Text from "../../shared/components/Text/Text";
 import { useContext } from "react";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStore";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
 import { Link } from "react-router-dom";
 
 const CheckoutBadge = () => {
   const { globalCartState } = useContext(CartStoreContext);
   return (
-    <StyledBadge badgeContent={globalCartState.items.length} color="primary">
+    <StyledBadge
+      data-testid={"badge-icon"}
+      badgeContent={globalCartState.gameItems.length}
+      color="primary"
+    >
       <StyledShoppingCartIcon />
     </StyledBadge>
   );

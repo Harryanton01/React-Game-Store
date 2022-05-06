@@ -25,6 +25,7 @@ export const ContentWrapper = styled.div`
   justify-content: space-around;
   flex-grow: 1;
 `;
+
 export const StyledColumn = styled(FlexColumn)<GrowFlexProps>`
   gap: 10px;
   flex: ${(props) => (props.growFlex ? 3 : 2)};
@@ -34,6 +35,7 @@ export const Row = styled(FlexRow)`
   flex: 2;
   justify-content: center;
 `;
+
 export const Grow = styled(FlexRow)`
   flex: 3;
 `;

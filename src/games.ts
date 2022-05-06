@@ -1,11 +1,35 @@
-import { GameType } from "./shared/types/game";
-
+import { GameType, GameCartType } from "./shared/types/game";
 import playstation from "./assets/playstation.jpg";
 import templerun from "./assets/templerun.jpg";
 import pokemon from "./assets/pokemon.jpg";
 import chickenrings from "./assets/chickenrings.jpg";
 import ragequitters from "./assets/ragequitters.jpg";
 import farmslam from "./assets/farmslam.jpg";
+
+export const mockGame = {
+  id: 0,
+  amount_usd: 21.5,
+  rating: 5,
+  description: {
+    release_date: new Date(2020, 3, 27),
+    title: "Crush Saga iOS",
+  },
+  img_src: "test_src_url",
+  tags: [
+    { id: 1, tagName: "Game" },
+    { id: 2, tagName: "Music" },
+    { id: 3, tagName: "Action" },
+  ],
+};
+
+const { description, amount_usd, id } = mockGame;
+
+export const mockGameCart: GameCartType = {
+  id,
+  amount_usd,
+  description,
+  quantity: 3,
+};
 
 const games: GameType[] = [
   {

@@ -1,23 +1,28 @@
-import { useContext, Fragment } from "react";
+import { useContext } from "react";
 import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
 import { currencies } from "../../currencies";
 
-const CurrencyValue = ({ amount }: { amount: number }) => {
+const CurrencyValue = ({
+  amount,
+  "data-testid": dataTestId,
+}: {
+  amount: number;
+  "data-testid"?: string;
+}) => {
   const { globalCurrencyState } = useContext(CurrencyContext);
   const sanitisedAmount = (
     amount * globalCurrencyState.currencyMultiplier
   ).toFixed(2);
-  const isGBP = globalCurrencyState.currency === "GBP";
+  const isGBP = globalCurrencyState.currencyValue === "GBP";
   const symbol = currencies.find((cur) => {
-    if (cur.value === globalCurrencyState.currency) return true;
-    return false;
+    return cur.value === globalCurrencyState.currencyValue;
   });
   return (
-    <Fragment>
+    <span data-testid={dataTestId}>
       {symbol && isGBP && symbol.symbol}
       {sanitisedAmount}
       {symbol && !isGBP && symbol.symbol}
-    </Fragment>
+    </span>
   );
 };
 

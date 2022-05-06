@@ -3,7 +3,7 @@ import Text from "../../shared/components/Text/Text";
 import AddIcon from "@mui/icons-material/Add";
 import { GameCartType } from "../../shared/types/game";
 import useButtonAdd from "../../hooks/useButtonAdd";
-import { addGameToCart } from "../../store/CartStoreContext/CartStore";
+import { addGameToCart } from "../../store/CartStoreContext/CartStoreContext";
 
 const AddGameButton: React.FC<{ game: GameCartType; quantity: number }> = ({
   game,
@@ -16,7 +16,13 @@ const AddGameButton: React.FC<{ game: GameCartType; quantity: number }> = ({
   };
   return (
     <StyledButton
-      startIcon={disabled ? <StyledDoneIcon /> : <AddIcon />}
+      startIcon={
+        disabled ? (
+          <StyledDoneIcon data-testid={"add-game-done-icon"} />
+        ) : (
+          <AddIcon data-testid={"add-game-plus-icon"} />
+        )
+      }
       onClick={handleClick.bind(null, game)}
       disabled={disabled}
     >

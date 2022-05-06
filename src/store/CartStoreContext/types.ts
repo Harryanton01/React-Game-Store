@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { GameCartType } from "../../shared/types/game";
 
 export type CartStoreStateType = {
-  items: GameCartType[];
+  gameItems: GameCartType[];
   totalAmountUsd: number;
 };
 

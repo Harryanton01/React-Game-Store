@@ -1,30 +1,28 @@
-import React, { FC, ReactNode } from "react";
+import { FC, ReactNode, createContext } from "react";
 import { CurrencyContextType, CurrencyStateType } from "./types";
-import useFetchCurrency from "../../hooks/useFetchCurrency";
+import useFetchCurrency from "../../hooks/useFetchCurrency/useFetchCurrency";
 
 export const initialCurrencyState: CurrencyStateType = {
-  currency: "EUR",
+  currencyValue: "EUR",
   currencyMultiplier: 1,
+  error: false,
 };
 
-export const initialCurrencyContextState: CurrencyContextType = {
+export const CurrencyContext = createContext<CurrencyContextType>({
   globalCurrencyState: initialCurrencyState,
-  updateCurrency: () => undefined,
-};
-export const CurrencyContext = React.createContext<CurrencyContextType>({
-  globalCurrencyState: initialCurrencyState,
-  updateCurrency: () => undefined,
+  fetchLatestCurrency: () => undefined,
 });
 
 export const CurrencyContextProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const { updateCurrency, currencyMultiplier, currency } = useFetchCurrency();
+  const { fetchLatestCurrency, currencyMultiplier, currencyValue, error } =
+    useFetchCurrency();
   return (
     <CurrencyContext.Provider
       value={{
-        globalCurrencyState: { currency, currencyMultiplier },
-        updateCurrency,
+        globalCurrencyState: { currencyValue, currencyMultiplier, error },
+        fetchLatestCurrency,
       }}
     >
       {children}

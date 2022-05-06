@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import {
   CartStoreContext,
   gameInCart,
-} from "../store/CartStoreContext/CartStore";
+} from "../store/CartStoreContext/CartStoreContext";
 import { GameCartType } from "../shared/types/game";
 
 const useButtonAdd = (game: GameCartType) => {

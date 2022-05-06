@@ -1,24 +1,25 @@
+import { useContext } from "react";
 import { StyledSelect } from "./styles";
 import MenuItem from "@mui/material/MenuItem";
 import { SelectProps } from "@mui/material";
 import { currencies } from "../../currencies";
-import useCurrencySelect from "../../hooks/useCurrencySelect";
+import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
 import { CurrencySelectors } from "../../store/CurrencyContext/types";
 import { SelectChangeEvent } from "@mui/material";
 
 const CurrencySelect: React.FC<SelectProps> = () => {
-  const { value, setValue, updateCurrency } = useCurrencySelect();
+  const { globalCurrencyState, fetchLatestCurrency } =
+    useContext(CurrencyContext);
   const onCurrencyChange = (event: SelectChangeEvent<unknown>) => {
-    const value = event.target.value as CurrencySelectors;
-    setValue(value);
-    updateCurrency(value);
-    console.log("change");
+    const newCurrencyValue = event.target.value as CurrencySelectors;
+    fetchLatestCurrency(newCurrencyValue);
   };
   return (
     <StyledSelect
-      value={value}
+      data-testid={"currency-selector"}
+      value={globalCurrencyState.currencyValue}
       label={"Currency"}
-      onChange={(e) => onCurrencyChange(e)}
+      onChange={(event) => onCurrencyChange(event)}
     >
       {currencies.map((currencyItem) => {
         return (
