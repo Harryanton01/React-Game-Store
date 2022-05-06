@@ -2,7 +2,7 @@ import { Row } from "./styles";
 import { CartItemContent } from "./styles";
 import useCartUpdate from "../../hooks/useCartUpdate/useCartUpdate";
 import { GameCartType } from "../../shared/types/game";
-import { UpdateGameQuantity } from "../QuantitySelector/QuantitySelector";
+import { QuantitySelector } from "../QuantitySelector/QuantitySelector";
 import Text from "../../shared/components/Text/Text";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
 
@@ -20,7 +20,7 @@ const CartItem = ({ game }: { game: GameCartType }) => {
           amount={game.amount_usd}
         />
       </Text>
-      <UpdateGameQuantity
+      <QuantitySelector
         game={game}
         onIncrementQuantity={updateGameAdd}
         onDecrementQuantity={updateGameRemove}

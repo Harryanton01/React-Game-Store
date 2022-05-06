@@ -4,6 +4,7 @@ import Text from "../../shared/components/Text/Text";
 
 export const RowWrapper = styled(FlexRow)`
   justify-content: center;
+  margin-top: 30px;
 `;
 
 export const Row = styled(FlexRow)`

@@ -18,7 +18,9 @@ import CurrencyValue from "../CurrencyValue/CurrencyValue";
 const GameItem = ({ game }: { game: GameType }) => {
   const { gameQuantity, incrementQuantity, decrementQuantity } =
     useQuantitySelector();
+
   const { img_src, description, rating, tags, amount_usd, quantity, id } = game;
+
   const gameCartItem: GameCartType = {
     id,
     amount_usd,
@@ -77,6 +79,7 @@ const GameItem = ({ game }: { game: GameType }) => {
               quantity={gameQuantity}
               onIncrementQuantity={incrementQuantity}
               onDecrementQuantity={decrementQuantity}
+              game={undefined}
             />
           }
         />

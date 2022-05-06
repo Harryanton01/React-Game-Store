@@ -7,6 +7,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import GameItemList from "./components/GameItemList/GameItemList";
 import CartItemList from "./components/CartItemList/CartItemList";
 import { CurrencyContextProvider } from "./store/CurrencyContext/CurrencyContext";
+import CurrencyError from "./components/CurrencyError/CurrencyError";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <GlobalStyles />
           <BrowserRouter>
             <NavBar />
+            <CurrencyError />
             <Routes>
               <Route path="/" element={<GameItemList games={games} />} />
               <Route path="/cart" element={<CartItemList />} />

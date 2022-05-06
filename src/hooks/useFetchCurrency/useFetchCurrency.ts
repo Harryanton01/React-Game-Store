@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { CurrencySelectors } from "../../store/CurrencyContext/types";
 
 const useFetchCurrency = () => {
@@ -28,6 +28,16 @@ const useFetchCurrency = () => {
       setError(true);
     }
   };
+
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setError(false);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [error]);
 
   return { currencyMultiplier, fetchLatestCurrency, currencyValue, error };
 };

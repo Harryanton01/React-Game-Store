@@ -9,6 +9,7 @@ import { GameCartType } from "../../shared/types/game";
 
 const useCartUpdate = (game: GameCartType) => {
   const { globalCartState, dispatch } = useContext(CartStoreContext);
+
   const gameQuantity = getGameQuantity(game.id, globalCartState);
 
   const updateGameAdd = (game?: GameCartType) => {

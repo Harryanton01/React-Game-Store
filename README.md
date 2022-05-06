@@ -1,3 +1,11 @@
+# Game Store App
+
+Game store demo app, built with React using hooks and the context API to manage state.
+
+<p align="center">
+  <img src="./src/assets/gamestore-example.PNG" alt="Image of Game Store App" width="738">
+</p>
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
