@@ -1,6 +1,6 @@
 # Game Store App
 
-Game store demo app, built with React using hooks and the context API to manage state.
+Game store demo app, built with React using the context API and custom hooks to manage state. Tests written with React-Testing-Library.
 
 <p align="center">
   <img src="./src/assets/gamestore-example.PNG" alt="Image of Game Store App" width="738">

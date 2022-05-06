@@ -10,7 +10,7 @@ const useFetchCurrency = () => {
   const fetchLatestCurrency = async (currency: CurrencySelectors) => {
     try {
       const response = await axios.get(
-        "http://api.exchangeratesapi.io/v1/lates",
+        "http://api.exchangeratesapi.io/v1/latest",
         {
           params: {
             access_key: "716b8a7b76f260f5d506a9d5e0b2ee5a",
