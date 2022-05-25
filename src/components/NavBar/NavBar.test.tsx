@@ -9,7 +9,7 @@ import { createMemoryHistory } from "history";
 const NavBarWithTheme = (
   <Theme>
     <BrowserRouter>
-      <NavBar />
+      <NavBar TitleContent={<span>Games</span>} />
       <Routes>
         <Route path="/" element={<div></div>} />
         <Route path="/cart" element={<div></div>} />
@@ -45,7 +45,7 @@ describe("NavBar link routes", () => {
     render(
       <Theme>
         <Router location={history.location} navigator={history}>
-          <NavBar />
+          <NavBar TitleContent={<span>Games</span>} />
           <Routes>
             <Route path="/" element={<div></div>} />
             <Route path="/cart" element={<div></div>} />
@@ -68,7 +68,7 @@ describe("NavBar link routes", () => {
       <Theme>
         <GlobalStyles />
         <Router location={"/cart"} navigator={history}>
-          <NavBar />
+          <NavBar TitleContent={<span>Games</span>} />
           <Routes>
             <Route path="/" element={<div></div>} />
             <Route path="/cart" element={<div></div>} />

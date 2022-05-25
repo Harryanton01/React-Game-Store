@@ -1,13 +1,11 @@
 import Theme from "./styles/Theme";
-import NavBar from "./components/NavBar/NavBar";
 import GlobalStyles from "./styles/global";
-import games from "./games";
 import { CartStoreContextProvider } from "./store/CartStoreContext/CartStoreContext";
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import GameItemList from "./components/GameItemList/GameItemList";
-import CartItemList from "./components/CartItemList/CartItemList";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import { CurrencyContextProvider } from "./store/CurrencyContext/CurrencyContext";
 import CurrencyError from "./components/CurrencyError/CurrencyError";
+import GamesListPage from "./pages/GamesList/GamesListPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 const App = () => {
   return (
@@ -16,11 +14,11 @@ const App = () => {
         <Theme>
           <GlobalStyles />
           <BrowserRouter>
-            <NavBar />
             <CurrencyError />
             <Routes>
-              <Route path="/" element={<GameItemList games={games} />} />
-              <Route path="/cart" element={<CartItemList />} />
+              <Route path="/" element={<Navigate to="/list" />} />
+              <Route path="/list" element={<GamesListPage />} />
+              <Route path="/cart" element={<CheckoutPage />} />
             </Routes>
           </BrowserRouter>
         </Theme>

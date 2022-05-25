@@ -3,13 +3,12 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import GameItem from "./GameItem";
 import Theme from "../../styles/Theme";
 import { mockGame } from "../../games";
-import NavBar from "../NavBar/NavBar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartStoreContextProvider } from "../../store/CartStoreContext/CartStoreContext";
 
 const GameItemComponent = (
   <Theme>
-    <GameItem game={mockGame} />
+    <GameItem game={mockGame} long={true} />
   </Theme>
 );
 
@@ -17,7 +16,6 @@ const GameItemComponentWithNav = (
   <Theme>
     <CartStoreContextProvider>
       <BrowserRouter>
-        <NavBar />
         <Routes>
           <Route path="/" element={GameItemComponent} />
           <Route path="/cart" element={<div></div>} />

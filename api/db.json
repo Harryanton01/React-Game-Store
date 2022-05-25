@@ -1,0 +1,84 @@
+{
+  "games": [
+    {
+      "id": 0,
+      "amount_usd": 21.5,
+      "rating": 5,
+      "description": {
+        "release_date": "2020-04-26T23:00:00.000Z",
+        "title": "Crush Saga iOS"
+      },
+      "img_src": "https://i.imgur.com/1G9s8gS.jpg",
+      "tags": [
+        { "id": 1, "tagName": "Game" },
+        { "id": 2, "tagName": "Music" },
+        { "id": 3, "tagName": "Action" }
+      ]
+    },
+    {
+      "id": 1,
+      "amount_usd": 14.85,
+      "rating": 5,
+      "description": {
+        "release_date": "2020-06-06T23:00:00.000Z",
+        "title": "Stranger Game Android"
+      },
+      "img_src": "https://i.imgur.com/CC4HMOi.jpg",
+      "tags": [
+        { "id": 1, "tagName": "Game" },
+        { "id": 2, "tagName": "Music" }
+      ]
+    },
+    {
+      "id": 2,
+      "amount_usd": 12.0,
+      "rating": 4,
+      "description": {
+        "release_date": "2019-10-01T23:00:00.000Z",
+        "title": "Best Game"
+      },
+      "img_src": "https://i.imgur.com/ihSSDCn.jpg",
+      "tags": [
+        { "id": 1, "tagName": "Game" },
+        { "id": 2, "tagName": "Action" }
+      ]
+    },
+    {
+      "id": 3,
+      "amount_usd": 8.0,
+      "rating": 3,
+      "description": {
+        "release_date": "2021-04-26T23:00:00.000Z",
+        "title": "Super Balls Mobile"
+      },
+      "img_src": "https://i.imgur.com/KWdAhwe.jpg",
+      "tags": [
+        { "id": 1, "tagName": "Game" },
+        { "id": 2, "tagName": "Music" },
+        { "id": 3, "tagName": "Action" }
+      ]
+    },
+    {
+      "id": 4,
+      "amount_usd": 4.6,
+      "rating": 3,
+      "description": {
+        "release_date": "2019-09-13T23:00:00.000Z",
+        "title": "Dogs Play"
+      },
+      "img_src": "https://i.imgur.com/sy16COz.jpg",
+      "tags": [{ "id": 1, "tagName": "Game" }]
+    },
+    {
+      "id": 5,
+      "amount_usd": 2.05,
+      "rating": 2,
+      "description": {
+        "release_date": "2019-07-15T23:00:00.000Z",
+        "title": "Puzzles Game"
+      },
+      "img_src": "https://i.imgur.com/DaSAuFr.jpg",
+      "tags": [{ "id": 1, "tagName": "Game" }]
+    }
+  ]
+}

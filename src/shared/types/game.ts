@@ -7,10 +7,10 @@ export type GameType = {
     title: string;
   };
   img_src: string;
-  quantity?: number;
+
   tags: Array<{ id: number; tagName: string }>;
 };
 
-export type GameCartType = Required<
-  Pick<GameType, "id" | "amount_usd" | "description" | "quantity">
->;
+export type GameCartType = GameType & {
+  quantity: number;
+};

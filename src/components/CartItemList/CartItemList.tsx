@@ -4,16 +4,19 @@ import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext"
 import Text from "../../shared/components/Text/Text";
 import { Row, RowItem, RowItemWrapper } from "./styles";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
+import GameItem from "../GameItem/GameItem";
+import { GameType } from "../../shared/types/game";
 
 const CartItemList = () => {
   const { globalCartState } = useContext(CartStoreContext);
   return (
     <Fragment>
       {globalCartState.gameItems.map((gameItem) => {
+        const game = gameItem as GameType;
         return (
           <RowItemWrapper data-testid={"cart-item-list"} key={gameItem.id}>
             <RowItem>
-              <CartItem game={gameItem} />
+              <GameItem game={game} long={false} />
             </RowItem>
           </RowItemWrapper>
         );

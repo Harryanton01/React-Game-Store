@@ -14,18 +14,49 @@ import { QuantitySelector } from "../QuantitySelector/QuantitySelector";
 import AddGameButton from "../AddGameButton/AddGameButton";
 import useQuantitySelector from "../../hooks/useQuantitySelector";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
+import { Fragment } from "react";
 
-const GameItem = ({ game }: { game: GameType }) => {
+const GameContent = ({ game }: { game: GameType }) => {
+  const { rating, tags } = game;
+  return (
+    <Fragment>
+      <GameItemContent
+        title={"Rating"}
+        content={
+          <StyledRating data-testid={"rating"} value={rating} readOnly />
+        }
+        growFlex
+      />
+      <GameItemContent
+        title={"Tags"}
+        content={
+          <FlexRow>
+            {tags.map((tag) => {
+              return (
+                <StyledChip
+                  key={tag.id}
+                  data-testid={"game-tag"}
+                  label={tag.tagName}
+                />
+              );
+            })}
+          </FlexRow>
+        }
+        growFlex
+      />
+    </Fragment>
+  );
+};
+
+const GameItem = ({ game, long }: { game: GameType; long: boolean }) => {
   const { gameQuantity, incrementQuantity, decrementQuantity } =
     useQuantitySelector();
 
-  const { img_src, description, rating, tags, amount_usd, quantity, id } = game;
+  const { img_src, description, amount_usd, id } = game;
 
   const gameCartItem: GameCartType = {
-    id,
-    amount_usd,
-    description,
-    quantity: quantity || 1,
+    ...game,
+    quantity: 1,
   };
 
   return (
@@ -35,43 +66,19 @@ const GameItem = ({ game }: { game: GameType }) => {
         <GameItemContent
           title={
             <span data-testid={"game-date"}>
-              {`Released - ${description.release_date.toLocaleDateString(
-                "en-US",
-                {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                }
-              )}`}
+              {`Released - ${new Date(
+                description.release_date
+              ).toLocaleDateString("en-US", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })}`}
             </span>
           }
           content={<Text fontBold>{description.title}</Text>}
           growFlex
         />
-        <GameItemContent
-          title={"Rating"}
-          content={
-            <StyledRating data-testid={"rating"} value={rating} readOnly />
-          }
-          growFlex
-        />
-        <GameItemContent
-          title={"Tags"}
-          content={
-            <FlexRow>
-              {tags.map((tag) => {
-                return (
-                  <StyledChip
-                    key={tag.id}
-                    data-testid={"game-tag"}
-                    label={tag.tagName}
-                  />
-                );
-              })}
-            </FlexRow>
-          }
-          growFlex
-        />
+        {long && <GameContent game={game} />}
         <GameItemContent
           title={"Quantity"}
           content={

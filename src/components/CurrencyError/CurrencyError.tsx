@@ -1,4 +1,4 @@
-import { useContext, Fragment } from "react";
+import { useContext } from "react";
 import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
 import { Row, RowWrapper } from "./styles";
 import { StyledText } from "./styles";
@@ -13,9 +13,7 @@ const CurrencyError = () => {
         </StyledText>
       </Row>
     </RowWrapper>
-  ) : (
-    <Fragment></Fragment>
-  );
+  ) : null;
 };
 
 export default CurrencyError;

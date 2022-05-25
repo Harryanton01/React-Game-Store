@@ -22,12 +22,8 @@ export const mockGame = {
   ],
 };
 
-const { description, amount_usd, id } = mockGame;
-
 export const mockGameCart: GameCartType = {
-  id,
-  amount_usd,
-  description,
+  ...mockGame,
   quantity: 3,
 };
 
