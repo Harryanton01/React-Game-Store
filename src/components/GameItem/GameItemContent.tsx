@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Text from "../../shared/components/Text/Text";
 import { StyledColumn } from "./styles";
 import { GameItemContentProps } from "./types";

@@ -13,6 +13,9 @@ export type CartStoreAction = {
 
 export type CartStoreContextType = {
   globalCartState: CartStoreStateType;
-  dispatch: React.Dispatch<CartStoreAction>;
+  addGame: (game: GameCartType) => void;
+  removeGame: (game: GameCartType) => void;
+  gameInCart: (id: number) => boolean;
+  getGameQuantity: (id: number) => number;
   children?: ReactNode;
 };

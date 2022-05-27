@@ -7,6 +7,7 @@ const theme = {
     green: "#14f1af",
     grey: "#5c6077",
     blue: "#3f48d8",
+    lightGrey: "#303550",
     lighterBlue: "#303550",
     lightBlue: "#1E2131",
     darkBlue: "#151829",

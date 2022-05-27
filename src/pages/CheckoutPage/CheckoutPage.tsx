@@ -4,7 +4,13 @@ import NavBar from "../../components/NavBar/NavBar";
 import { Link } from "react-router-dom";
 import Text from "../../shared/components/Text/Text";
 import FlexColumn from "../../shared/components/Layout/FlexColumn";
-import { StyledArrowIcon, Row } from "./styles";
+import {
+  StyledArrowIcon,
+  Row,
+  NavBarRow,
+  CartTotalOrderWrapper,
+} from "./styles";
+import CartTotalOrder from "../../components/CartTotalOrder/CartTotalOrder";
 
 const CheckoutPage = () => {
   return (
@@ -18,16 +24,21 @@ const CheckoutPage = () => {
               </Text>
               <Link to="/">
                 <Text fontSize="small" secondaryColor>
-                  <Row>
+                  <NavBarRow>
                     <StyledArrowIcon /> Go back to overview page
-                  </Row>
+                  </NavBarRow>
                 </Text>
               </Link>
             </FlexColumn>
           </Fragment>
         }
       />
-      <CartItemList />
+      <Row>
+        <CartItemList />
+        <CartTotalOrderWrapper>
+          <CartTotalOrder />
+        </CartTotalOrderWrapper>
+      </Row>
     </Fragment>
   );
 };

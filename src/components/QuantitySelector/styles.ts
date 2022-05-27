@@ -4,7 +4,7 @@ import FlexRow from "../../shared/components/Layout/FlexRow";
 
 export const IconButton = styled(Button)`
   && {
-    background-color: #303550;
+    background-color: ${(props) => props.theme.colors.lightGrey};
     min-width: 0;
     padding: 2px;
 

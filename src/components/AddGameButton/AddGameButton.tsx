@@ -2,18 +2,22 @@ import { StyledButton, StyledDoneIcon } from "./styles";
 import Text from "../../shared/components/Text/Text";
 import AddIcon from "@mui/icons-material/Add";
 import { GameCartType } from "../../shared/types/game";
-import useButtonAdd from "../../hooks/useButtonAdd";
-import { addGameToCart } from "../../store/CartStoreContext/CartStoreContext";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
+import { useContext, useState, useEffect } from "react";
 
 const AddGameButton: React.FC<{ game: GameCartType; quantity: number }> = ({
   game,
   quantity,
 }) => {
-  const { disabled, dispatch } = useButtonAdd(game);
+  const { addGame, gameInCart, globalCartState } = useContext(CartStoreContext);
+  const [disabled, setDisabled] = useState(gameInCart(game.id));
   const handleClick = (game: GameCartType) => {
     const updatedGame = { ...game, quantity: quantity };
-    dispatch(addGameToCart(updatedGame));
+    addGame(updatedGame);
   };
+  useEffect(() => {
+    setDisabled(gameInCart(game.id));
+  }, [globalCartState]);
   return (
     <StyledButton
       startIcon={

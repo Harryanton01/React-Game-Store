@@ -6,7 +6,13 @@ const GameItemList = ({ games }: { games: GameType[] }) => {
   return (
     <Column>
       {games.map((gameItem) => {
-        return <GameItem key={gameItem.id} game={gameItem} long={true} />;
+        return (
+          <GameItem
+            key={gameItem.id}
+            game={gameItem}
+            showAdditionalContent={true}
+          />
+        );
       })}
     </Column>
   );
