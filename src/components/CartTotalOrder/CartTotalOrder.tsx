@@ -33,7 +33,7 @@ const CartTotalOrder = () => {
         <StyledDivider variant="middle" />
       </Row>
       <CenterRow>
-        <Link to="/">
+        <Link to="/list">
           <Text secondaryColor>Back to overview</Text>
         </Link>
       </CenterRow>

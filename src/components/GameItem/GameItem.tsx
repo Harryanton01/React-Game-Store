@@ -1,61 +1,33 @@
 import { Container, GameImage, ContentWrapper, Row } from "./styles";
 import { GameType, GameCartType } from "../../shared/types/game";
 import Text from "../../shared/components/Text/Text";
-import GameItemContent from "./GameItemContent";
-import { QuantitySelector } from "../QuantitySelector/QuantitySelector";
+import {
+  GameTitle,
+  GameQuantitySelector,
+  GameRating,
+  GameTags,
+} from "./GameItemContent";
 import AddGameButton from "../AddGameButton/AddGameButton";
-import RemoveGameButton from "../RemoveGameButton/RemoveGameButton";
 import useQuantitySelector from "../../hooks/useQuantitySelector";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
-import AdditionalGameContent from "./AdditionalGameContent";
 
-const GameItem = ({
-  game,
-  showAdditionalContent,
-}: {
-  game: GameType;
-  showAdditionalContent: boolean;
-}) => {
-  const gameCartItem: GameCartType = {
-    ...game,
-    quantity: 0,
-  };
-
+const GameItem = ({ game }: { game: GameType }) => {
+  const gameCart: GameCartType = { ...game, quantity: 1 };
+  const { img_src, amount_usd, description, rating, tags } = game;
   const { gameQuantity, incrementQuantity, decrementQuantity } =
-    useQuantitySelector(gameCartItem);
-
-  const { img_src, description, amount_usd } = game;
-
+    useQuantitySelector(gameCart);
   return (
     <Container data-testid={"game-item-list"}>
       <GameImage src={img_src} alt={"Game Image"} />
       <ContentWrapper>
-        <GameItemContent
-          title={
-            <span data-testid={"game-date"}>
-              {`Released - ${new Date(
-                description.release_date
-              ).toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })}`}
-            </span>
-          }
-          content={<Text fontBold>{description.title}</Text>}
-          growFlex
-        />
-        {showAdditionalContent && <AdditionalGameContent game={game} />}
-        <GameItemContent
-          title={"Quantity"}
-          content={
-            <QuantitySelector
-              quantity={gameQuantity}
-              onIncrementQuantity={incrementQuantity}
-              onDecrementQuantity={decrementQuantity}
-              game={gameCartItem}
-            />
-          }
+        <GameTitle description={description} />
+        <GameRating rating={rating} />
+        <GameTags tags={tags} />
+        <GameQuantitySelector
+          game={gameCart}
+          quantity={gameQuantity}
+          incrementQuantity={incrementQuantity}
+          decrementQuantity={decrementQuantity}
         />
         <Row>
           <Text fontSize="large" fontBold>
@@ -66,11 +38,7 @@ const GameItem = ({
           </Text>
         </Row>
         <Row>
-          {showAdditionalContent ? (
-            <AddGameButton game={gameCartItem} quantity={gameQuantity} />
-          ) : (
-            <RemoveGameButton game={gameCartItem} />
-          )}
+          <AddGameButton game={gameCart} quantity={gameQuantity} />
         </Row>
       </ContentWrapper>
     </Container>

@@ -2,7 +2,7 @@ import React, { ReactNode } from "react";
 import "@testing-library/jest-dom";
 import { renderHook, act, waitFor } from "@testing-library/react";
 import useFetchCurrency from "./useFetchCurrency";
-import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyContext";
+import { CurrencyContextProvider } from "../CurrencyContext";
 import axios from "axios";
 
 jest.mock("axios");

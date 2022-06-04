@@ -5,20 +5,16 @@ import { CartStoreContext } from "../store/CartStoreContext/CartStoreContext";
 const useQuantitySelector = (game: GameCartType) => {
   const { addGame, removeGame, gameInCart, globalCartState, getGameQuantity } =
     useContext(CartStoreContext);
+
   const [gameQuantity, setQuantity] = useState(1);
+
   const incrementQuantity = () => {
-    if (gameInCart(game.id)) {
-      const updatedGame = { ...game, quantity: game.quantity + 1 };
-      addGame(updatedGame);
-    }
+    if (gameInCart(game.id)) addGame(game);
     setQuantity(gameQuantity + 1);
   };
 
   const decrementQuantity = () => {
-    if (gameInCart(game.id)) {
-      const updatedGame = { ...game, quantity: 1 };
-      removeGame(updatedGame);
-    }
+    if (gameInCart(game.id)) removeGame(game);
     if (gameQuantity === 1) return;
     setQuantity(gameQuantity - 1);
   };
@@ -26,8 +22,9 @@ const useQuantitySelector = (game: GameCartType) => {
   useEffect(() => {
     getGameQuantity(game.id) > 0
       ? setQuantity(getGameQuantity(game.id))
-      : setQuantity(1);
+      : setQuantity(gameQuantity);
   }, [globalCartState]);
+
   return { gameQuantity, incrementQuantity, decrementQuantity };
 };
 

@@ -8,7 +8,7 @@ const useFetchGamesList = () => {
   const fetchGamesList = async () => {
     try {
       const response = await axios.get("http://localhost:8000/api/games");
-      const gamesList = await response.data;
+      const gamesList: GameType[] = await response.data;
       if (response.status === 200) {
         setGamesList(gamesList);
       }

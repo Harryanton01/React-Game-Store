@@ -12,7 +12,7 @@ const AddGameButton: React.FC<{ game: GameCartType; quantity: number }> = ({
   const { addGame, gameInCart, globalCartState } = useContext(CartStoreContext);
   const [disabled, setDisabled] = useState(gameInCart(game.id));
   const handleClick = (game: GameCartType) => {
-    const updatedGame = { ...game, quantity: quantity };
+    const updatedGame = { ...game, quantity };
     addGame(updatedGame);
   };
   useEffect(() => {
@@ -22,15 +22,15 @@ const AddGameButton: React.FC<{ game: GameCartType; quantity: number }> = ({
     <StyledButton
       startIcon={
         disabled ? (
-          <StyledDoneIcon data-testid={"add-game-done-icon"} />
+          <StyledDoneIcon data-testid="add-game-done-icon" />
         ) : (
-          <AddIcon data-testid={"add-game-plus-icon"} />
+          <AddIcon data-testid="add-game-plus-icon" />
         )
       }
       onClick={handleClick.bind(null, game)}
       disabled={disabled}
     >
-      <Text fontSize={"extraSmall"} fontBold>
+      <Text fontSize="extraSmall" fontBold>
         {disabled ? "ADDED" : "ADD TO BASKET"}
       </Text>
     </StyledButton>

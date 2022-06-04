@@ -3,7 +3,7 @@ export type GameType = {
   amount_usd: number;
   rating: number;
   description: {
-    release_date: Date;
+    release_date: string;
     title: string;
   };
   img_src: string;

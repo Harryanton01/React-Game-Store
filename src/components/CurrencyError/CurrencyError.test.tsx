@@ -4,17 +4,29 @@ import { render, screen } from "@testing-library/react";
 import Theme from "../../styles/Theme";
 import CurrencyError from "./CurrencyError";
 import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
-import useFetchCurrency from "../../hooks/useFetchCurrency/useFetchCurrency";
+import useFetchCurrency from "../../store/CurrencyContext/useFetchCurrency/useFetchCurrency";
 
 const MockCurrencyContextProvider: FC<{ children: ReactNode }> = ({
   children,
 }) => {
-  const { currencyMultiplier, currencyValue, fetchLatestCurrency, error } =
-    useFetchCurrency();
+  const {
+    currencyMultiplier,
+    currencyValue,
+    fetchLatestCurrency,
+    error,
+    currencySymbol,
+    symbolBeforeValue,
+  } = useFetchCurrency();
   return (
     <CurrencyContext.Provider
       value={{
-        globalCurrencyState: { currencyValue, currencyMultiplier, error },
+        globalCurrencyState: {
+          currencyValue,
+          currencyMultiplier,
+          error,
+          currencySymbol,
+          symbolBeforeValue,
+        },
         fetchLatestCurrency,
       }}
     >

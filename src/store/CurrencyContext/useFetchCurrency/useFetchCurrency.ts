@@ -1,10 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { CurrencySelectors } from "../../store/CurrencyContext/types";
+import { CurrencySelectors, CurrencySymbol } from "../types";
+import { currencies } from "../../../currencies";
 
 const useFetchCurrency = () => {
   const [currencyValue, setCurrencyValue] = useState<CurrencySelectors>("EUR");
   const [currencyMultiplier, setCurrencyMultiplier] = useState(1);
+  const [currencySymbol, setCurrencySymbol] = useState<CurrencySymbol>("€");
+  const [symbolBeforeValue, setSymbolBeforeValue] = useState(false);
   const [error, setError] = useState(false);
 
   const fetchLatestCurrency = async (currency: CurrencySelectors) => {
@@ -30,6 +33,17 @@ const useFetchCurrency = () => {
   };
 
   useEffect(() => {
+    const symbol = currencies.find((currency) => {
+      return currency.value === currencyValue;
+    });
+
+    if (symbol) {
+      setCurrencySymbol(symbol.symbol as CurrencySymbol);
+      setSymbolBeforeValue(symbol.symbolBeforeValue);
+    }
+  }, [currencyValue]);
+
+  useEffect(() => {
     const timeOut = setTimeout(() => {
       setError(false);
     }, 5000);
@@ -39,7 +53,14 @@ const useFetchCurrency = () => {
     };
   }, [error]);
 
-  return { currencyMultiplier, fetchLatestCurrency, currencyValue, error };
+  return {
+    currencyMultiplier,
+    fetchLatestCurrency,
+    currencyValue,
+    currencySymbol,
+    symbolBeforeValue,
+    error,
+  };
 };
 
 export default useFetchCurrency;

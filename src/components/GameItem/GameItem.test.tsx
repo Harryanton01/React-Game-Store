@@ -8,7 +8,7 @@ import { CartStoreContextProvider } from "../../store/CartStoreContext/CartStore
 
 const GameItemComponent = (
   <Theme>
-    <GameItem game={mockGame} showAdditionalContent={true} />
+    <GameItem game={mockGame} />
   </Theme>
 );
 

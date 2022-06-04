@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
-import { currencies } from "../../currencies";
 
 const CurrencyValue = ({
   amount,
@@ -13,15 +12,13 @@ const CurrencyValue = ({
   const sanitisedAmount = (
     amount * globalCurrencyState.currencyMultiplier
   ).toFixed(2);
-  const isGBP = globalCurrencyState.currencyValue === "GBP";
-  const symbol = currencies.find((cur) => {
-    return cur.value === globalCurrencyState.currencyValue;
-  });
   return (
     <span data-testid={dataTestId}>
-      {symbol && isGBP && symbol.symbol}
+      {globalCurrencyState.symbolBeforeValue &&
+        globalCurrencyState.currencySymbol}
       {sanitisedAmount}
-      {symbol && !isGBP && symbol.symbol}
+      {!globalCurrencyState.symbolBeforeValue &&
+        globalCurrencyState.currencySymbol}
     </span>
   );
 };
