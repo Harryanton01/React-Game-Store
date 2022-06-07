@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import GameItemList from "../../components/GameItemList/GameItemList";
-import useFetchGamesList from "../../hooks/useFetchGames";
+import useFetchGamesList from "./useFetchGames";
 import NavBar from "../../components/NavBar/NavBar";
 import Text from "../../shared/components/Text/Text";
 

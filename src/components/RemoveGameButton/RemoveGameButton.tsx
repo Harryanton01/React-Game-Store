@@ -18,7 +18,7 @@ const RemoveGameButton: React.FC<{ game: GameCartType }> = ({ game }) => {
       startIcon={<DeleteIcon />}
       onClick={handleClick.bind(null, game)}
     >
-      <Text fontSize={"extraSmall"} fontBold>
+      <Text fontSize="extraSmall" fontBold>
         REMOVE
       </Text>
     </StyledButton>

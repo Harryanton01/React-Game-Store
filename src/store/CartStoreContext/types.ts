@@ -6,11 +6,6 @@ export type CartStoreStateType = {
   totalAmountUsd: number;
 };
 
-export type CartStoreAction = {
-  type: "add" | "remove";
-  payload: GameCartType;
-};
-
 export type CartStoreContextType = {
   globalCartState: CartStoreStateType;
   addGame: (game: GameCartType) => void;

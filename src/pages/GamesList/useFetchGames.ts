@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { GameType } from "../shared/types/game";
+import { GameType } from "../../shared/types/game";
 
 const useFetchGamesList = () => {
   const [gamesList, setGamesList] = useState<GameType[]>([]);

@@ -22,7 +22,7 @@ const CheckoutPage = () => {
               <Text fontSize="large" fontBold>
                 Checkout
               </Text>
-              <Link to="/">
+              <Link to="/list">
                 <Text fontSize="small" secondaryColor>
                   <NavBarRow>
                     <StyledArrowIcon /> Go back to overview page

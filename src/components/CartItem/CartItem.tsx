@@ -12,8 +12,8 @@ const CartItem = ({ game }: { game: GameType }) => {
   const { gameQuantity, incrementQuantity, decrementQuantity } =
     useQuantitySelector(gameCart);
   return (
-    <Container data-testid={"game-item-list"}>
-      <GameImage src={img_src} alt={"Game Image"} />
+    <Container data-testid="game-item-list">
+      <GameImage src={img_src} alt="Game Image" />
       <ContentWrapper>
         <GameTitle description={description} />
         <GameQuantitySelector
@@ -25,7 +25,7 @@ const CartItem = ({ game }: { game: GameType }) => {
         <Row>
           <Text fontSize="large" fontBold>
             <CurrencyValue
-              data-testid={"game-currency-value"}
+              data-testid="game-currency-value"
               amount={amount_usd}
             />
           </Text>

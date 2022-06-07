@@ -18,14 +18,14 @@ const CartTotalOrder = () => {
         <Text fontSize="large" fontBold>
           {`${globalCurrencyState.currencyValue} `}
           <CurrencyValue
-            data-testid={"total-cart-amount"}
+            data-testid="total-cart-amount"
             amount={globalCartState.totalAmountUsd}
           />
         </Text>
       </Row>
       <Row>
         <Text fontSize="large">Total Items</Text>
-        <Text fontSize="large" fontBold>
+        <Text data-testid="total-cart-items" fontSize="large" fontBold>
           {globalCartState.gameItems.length}
         </Text>
       </Row>

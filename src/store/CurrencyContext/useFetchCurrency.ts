@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { CurrencySelectors, CurrencySymbol } from "../types";
-import { currencies } from "../../../currencies";
+import { CurrencySelectors, CurrencySymbol } from "./types";
+import { currencies } from "../../currencies";
 
 const useFetchCurrency = () => {
   const [currencyValue, setCurrencyValue] = useState<CurrencySelectors>("EUR");
