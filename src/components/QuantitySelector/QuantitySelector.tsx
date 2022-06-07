@@ -19,15 +19,15 @@ export const QuantitySelector = <T extends unknown>({
   return (
     <Row>
       <IconButton
-        data-testid={"decrement-quantity-button"}
+        data-testid="decrement-quantity-button"
         startIcon={<RemoveIcon />}
         onClick={() => onDecrementQuantity(game)}
       />
-      <Text data-testid={"quantity-value"} fontSize={"small"}>
+      <Text data-testid="quantity-value" fontSize="small">
         {quantity}
       </Text>
       <IconButton
-        data-testid={"increment-quantity-button"}
+        data-testid="increment-quantity-button"
         startIcon={<AddIcon />}
         onClick={() => onIncrementQuantity(game)}
       />

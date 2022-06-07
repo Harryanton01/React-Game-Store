@@ -16,9 +16,9 @@ const CurrencySelect: React.FC<SelectProps> = () => {
   };
   return (
     <StyledSelect
-      data-testid={"currency-selector"}
+      data-testid="currency-selector"
       value={globalCurrencyState.currencyValue}
-      label={"Currency"}
+      label="Currency"
       onChange={(event) => onCurrencyChange(event)}
     >
       {currencies.map((currencyItem) => {

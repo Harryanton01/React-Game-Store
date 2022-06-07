@@ -51,8 +51,8 @@ export const GameTitle = ({
 export const GameRating = ({ rating }: { rating: number }) => {
   return (
     <GameItemContent
-      title={"Rating"}
-      content={<StyledRating data-testid={"rating"} value={rating} readOnly />}
+      title="Rating"
+      content={<StyledRating data-testid="rating" value={rating} readOnly />}
       growFlex
     />
   );
@@ -65,14 +65,14 @@ export const GameTags = ({
 }) => {
   return (
     <GameItemContent
-      title={"Tags"}
+      title="Tags"
       content={
         <FlexRow>
           {tags.map((tag) => {
             return (
               <StyledChip
                 key={tag.id}
-                data-testid={"game-tag"}
+                data-testid="game-tag"
                 label={tag.tagName}
               />
             );
@@ -97,7 +97,7 @@ export const GameQuantitySelector = ({
 }) => {
   return (
     <GameItemContent
-      title={"Quantity"}
+      title="Quantity"
       content={
         <QuantitySelector
           quantity={quantity}

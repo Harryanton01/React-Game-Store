@@ -1,6 +1,6 @@
 import { FC, ReactNode, createContext } from "react";
 import { CurrencyContextType, CurrencyStateType } from "./types";
-import useFetchCurrency from "./useFetchCurrency/useFetchCurrency";
+import useFetchCurrency from "./useFetchCurrency";
 
 export const initialCurrencyState: CurrencyStateType = {
   currencyValue: "EUR",

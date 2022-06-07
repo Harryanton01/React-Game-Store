@@ -3,7 +3,7 @@ import { GameCartType } from "../shared/types/game";
 import { CartStoreContext } from "../store/CartStoreContext/CartStoreContext";
 
 const useQuantitySelector = (game: GameCartType) => {
-  const { addGame, removeGame, gameInCart, globalCartState, getGameQuantity } =
+  const { addGame, removeGame, gameInCart, getGameQuantity } =
     useContext(CartStoreContext);
 
   const [gameQuantity, setQuantity] = useState(1);
@@ -23,7 +23,7 @@ const useQuantitySelector = (game: GameCartType) => {
     getGameQuantity(game.id) > 0
       ? setQuantity(getGameQuantity(game.id))
       : setQuantity(gameQuantity);
-  }, [globalCartState]);
+  }, [gameQuantity, game.id, getGameQuantity]);
 
   return { gameQuantity, incrementQuantity, decrementQuantity };
 };

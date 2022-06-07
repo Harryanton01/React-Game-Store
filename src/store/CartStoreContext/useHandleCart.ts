@@ -3,9 +3,9 @@ import { CartStoreStateType } from "./types";
 import { initialCartState } from "./CartStoreContext";
 import { GameCartType } from "../../shared/types/game";
 
-const useHandleCart = () => {
+const useHandleCart = (cartState = initialCartState) => {
   const [globalCartState, setGlobalCartState] =
-    useState<CartStoreStateType>(initialCartState);
+    useState<CartStoreStateType>(cartState);
 
   const gameInCart = (id: number) => {
     return findGameIndex(id) === -1 ? false : true;
