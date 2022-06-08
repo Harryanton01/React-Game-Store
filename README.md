@@ -3,7 +3,7 @@
 Game store demo app, built with React using the context API and custom hooks to manage state. Tests written with React-Testing-Library.
 
 <p align="center">
-  <img src="https://imgur.com/cGzDqtX" alt="Image of Game Store App" width="738">
+  <img src="https://i.imgur.com/cGzDqtX.png" alt="Image of Game Store App" width="738">
 </p>
 
 # Getting Started with Create React App
