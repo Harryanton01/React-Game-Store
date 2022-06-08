@@ -1,6 +1,6 @@
-import { GameCartType } from "./shared/types/game";
+import { GameCartType, GameType } from "./shared/types/game";
 
-export const mockGame = {
+export const mockGame: GameType = {
   id: 0,
   amount_usd: 21.5,
   rating: 5,

@@ -12,6 +12,7 @@ import { BrowserRouter, Router } from "react-router-dom";
 import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyContextProvider";
 import { CartStoreContextProvider } from "../../store/CartStoreContext/CartStoreContextProvider";
 import { createMemoryHistory } from "history";
+import { mockGame } from "../../mock-games";
 import axios from "axios";
 
 jest.mock("axios");
@@ -21,23 +22,7 @@ const mockedAxiosFn = () => {
     switch (url) {
       case "http://localhost:8000/api/games":
         return Promise.resolve({
-          data: [
-            {
-              id: 0,
-              amount_usd: 21.5,
-              rating: 5,
-              description: {
-                release_date: "2020-04-26T23:00:00.000Z",
-                title: "Crush Saga iOS",
-              },
-              img_src: "https://i.imgur.com/1G9s8gS.jpg",
-              tags: [
-                { id: 1, tagName: "Game" },
-                { id: 2, tagName: "Music" },
-                { id: 3, tagName: "Action" },
-              ],
-            },
-          ],
+          data: [mockGame],
           status: 200,
         });
       case "http://api.exchangeratesapi.io/v1/latest":

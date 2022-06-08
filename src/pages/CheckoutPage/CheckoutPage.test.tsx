@@ -13,27 +13,13 @@ import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyCon
 import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 import useHandleCart from "../../store/CartStoreContext/useHandleCart";
 import { createMemoryHistory } from "history";
+import { mockGameCart } from "../../mock-games";
 import axios from "axios";
 
 jest.mock("axios");
 
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
-const mockGame = {
-  id: 0,
-  amount_usd: 21.5,
-  rating: 5,
-  description: {
-    release_date: "2020-04-26T23:00:00.000Z",
-    title: "Crush Saga iOS",
-  },
-  img_src: "https://i.imgur.com/1G9s8gS.jpg",
-  tags: [
-    { id: 1, tagName: "Game" },
-    { id: 2, tagName: "Music" },
-    { id: 3, tagName: "Action" },
-  ],
-};
 const mockedAxiosFn = () => {
   mockedAxios.get.mockResolvedValueOnce({
     data: {
@@ -46,7 +32,7 @@ const mockedAxiosFn = () => {
 const MockCheckoutPage = () => {
   const { globalCartState, addGame, removeGame, gameInCart, getGameQuantity } =
     useHandleCart({
-      gameItems: [{ quantity: 2, ...mockGame }],
+      gameItems: [mockGameCart],
       totalAmountUsd: 43,
     });
   return (
