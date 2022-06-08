@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
+import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContextProvider";
 import { Row, RowWrapper } from "./styles";
 import { StyledText } from "./styles";
 

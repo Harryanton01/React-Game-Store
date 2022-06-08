@@ -3,7 +3,7 @@ import { GameCartType, GameType } from "../../shared/types/game";
 import Text from "../../shared/components/Text/Text";
 import { GameTitle, GameQuantitySelector } from "../GameItem/GameItemContent";
 import RemoveGameButton from "../RemoveGameButton/RemoveGameButton";
-import useQuantitySelector from "../../hooks/useQuantitySelector";
+import useQuantitySelector from "../QuantitySelector/useQuantitySelector";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
 
 const CartItem = ({ game }: { game: GameType }) => {

@@ -2,7 +2,7 @@ import { StyledButton, StyledDoneIcon } from "./styles";
 import Text from "../../shared/components/Text/Text";
 import AddIcon from "@mui/icons-material/Add";
 import { GameCartType } from "../../shared/types/game";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 import { useContext, useState, useEffect } from "react";
 
 const AddGameButton: React.FC<{ game: GameCartType; quantity: number }> = ({

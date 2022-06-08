@@ -1,14 +1,20 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import Text from "../../shared/components/Text/Text";
 import { Row, StyledDivider, Column, CenterRow } from "./styles";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
-import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
+import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContextProvider";
 import { Link } from "react-router-dom";
 
 const CartTotalOrder = () => {
   const { globalCartState } = useContext(CartStoreContext);
   const { globalCurrencyState } = useContext(CurrencyContext);
+  const [totalItems, setTotalItems] = useState(0);
+  useEffect(() => {
+    setTotalItems(
+      globalCartState.gameItems.reduce((pre, cur) => pre + cur.quantity, 0)
+    );
+  }, [globalCartState]);
   return (
     <Column>
       <Row>
@@ -26,7 +32,7 @@ const CartTotalOrder = () => {
       <Row>
         <Text fontSize="large">Total Items</Text>
         <Text data-testid="total-cart-items" fontSize="large" fontBold>
-          {globalCartState.gameItems.length}
+          {totalItems}
         </Text>
       </Row>
       <Row>

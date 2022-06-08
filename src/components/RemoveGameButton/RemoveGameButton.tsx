@@ -3,8 +3,8 @@ import Text from "../../shared/components/Text/Text";
 import { GameCartType } from "../../shared/types/game";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useContext } from "react";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
-import useQuantitySelector from "../../hooks/useQuantitySelector";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
+import useQuantitySelector from "../QuantitySelector/useQuantitySelector";
 
 const RemoveGameButton: React.FC<{ game: GameCartType }> = ({ game }) => {
   const { removeGame } = useContext(CartStoreContext);

@@ -1,8 +1,8 @@
 import Theme from "./styles/Theme";
 import GlobalStyles from "./styles/global";
-import { CartStoreContextProvider } from "./store/CartStoreContext/CartStoreContext";
+import { CartStoreContextProvider } from "./store/CartStoreContext/CartStoreContextProvider";
 import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
-import { CurrencyContextProvider } from "./store/CurrencyContext/CurrencyContext";
+import { CurrencyContextProvider } from "./store/CurrencyContext/CurrencyContextProvider";
 import CurrencyError from "./components/CurrencyError/CurrencyError";
 import GamesListPage from "./pages/GamesList/GamesListPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";

@@ -8,7 +8,7 @@ import {
   GameTags,
 } from "./GameItemContent";
 import AddGameButton from "../AddGameButton/AddGameButton";
-import useQuantitySelector from "../../hooks/useQuantitySelector";
+import useQuantitySelector from "../QuantitySelector/useQuantitySelector";
 import CurrencyValue from "../CurrencyValue/CurrencyValue";
 
 const GameItem = ({ game }: { game: GameType }) => {

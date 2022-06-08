@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { CartStoreStateType } from "./types";
-import { initialCartState } from "./CartStoreContext";
+import { initialCartState } from "./CartStoreContextProvider";
 import { GameCartType } from "../../shared/types/game";
 
 const useHandleCart = (cartState = initialCartState) => {

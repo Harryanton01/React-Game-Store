@@ -1,5 +1,5 @@
 import { Fragment, useContext } from "react";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 import { RowItemWrapper } from "./styles";
 import CartItem from "../CartItem/CartItem";
 import { GameType } from "../../shared/types/game";

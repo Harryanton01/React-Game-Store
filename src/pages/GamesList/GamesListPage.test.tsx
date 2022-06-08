@@ -9,8 +9,8 @@ import {
 import Theme from "../../styles/Theme";
 import GamesListPage from "./GamesListPage";
 import { BrowserRouter, Router } from "react-router-dom";
-import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyContext";
-import { CartStoreContextProvider } from "../../store/CartStoreContext/CartStoreContext";
+import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyContextProvider";
+import { CartStoreContextProvider } from "../../store/CartStoreContext/CartStoreContextProvider";
 import { createMemoryHistory } from "history";
 import axios from "axios";
 
@@ -75,7 +75,7 @@ describe("GamePage Tests", () => {
     });
   });
 
-  test("should display correct initial base currency EUR", async () => {
+  test("should display correct initial base currency EUR in currency value component", async () => {
     mockedAxiosFn();
     render(GamePage);
     await waitFor(() => {
@@ -84,11 +84,11 @@ describe("GamePage Tests", () => {
     });
   });
 
-  test("should change game currency value when selecting a new currency", async () => {
+  test("should change game currency value component when selecting a new currency", async () => {
     mockedAxiosFn();
     render(GamePage);
-    const selectCurrencyElement = screen.getAllByRole("button");
-    fireEvent.mouseDown(selectCurrencyElement[1]);
+    const selectCurrencyElement = screen.getByText("EUR €");
+    fireEvent.mouseDown(selectCurrencyElement);
     const listbox = within(screen.getByRole("listbox"));
     fireEvent.click(listbox.getByText(/GBP/i));
     await waitFor(() => {
@@ -97,7 +97,7 @@ describe("GamePage Tests", () => {
     });
   });
 
-  test("should increment game quantity", async () => {
+  test("should increment game quantity when clicking on the increment button", async () => {
     mockedAxiosFn();
     render(GamePage);
     const incrementButton = await screen.findByTestId(
@@ -108,7 +108,7 @@ describe("GamePage Tests", () => {
     expect(quantityValue).toHaveTextContent("2");
   });
 
-  test("should decrement game quantity but not below 1", async () => {
+  test("should decrement game quantity when clicking on the decrement button but not below 1", async () => {
     mockedAxiosFn();
     render(GamePage);
     const incrementButton = await screen.findByTestId(
@@ -124,7 +124,7 @@ describe("GamePage Tests", () => {
     expect(quantityValue).toHaveTextContent("1");
   });
 
-  test("should add game to cart and disable add to basket button", async () => {
+  test("should add game to cart and disable add to basket button when clicking on add to basket button", async () => {
     mockedAxiosFn();
     render(GamePage);
     const addGameButton = await screen.findByRole("button", {
@@ -136,7 +136,7 @@ describe("GamePage Tests", () => {
     expect(addGameButton).toBeDisabled();
   });
 
-  test("should display the number of games added in the cart badge regardless of quantity", async () => {
+  test("should display the number of games added in the cart badge component regardless of quantity value", async () => {
     mockedAxiosFn();
     render(GamePage);
     const addGameButton = await screen.findByRole("button", {
@@ -152,7 +152,7 @@ describe("GamePage Tests", () => {
     expect(cartBadge).toHaveTextContent("1");
   });
 
-  test("should remove game from cart and re-enable add to basket button when decrementing quantity below 1", async () => {
+  test("should remove game from cart and re-enable add to basket button when decrementing quantity value below 1", async () => {
     mockedAxiosFn();
     render(GamePage);
     const addGameButton = await screen.findByRole("button", {

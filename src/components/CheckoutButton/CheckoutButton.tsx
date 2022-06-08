@@ -5,7 +5,7 @@ import {
 } from "./styles";
 import Text from "../../shared/components/Text/Text";
 import { useContext, useEffect, useState } from "react";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 import { Link } from "react-router-dom";
 
 const CheckoutBadge = () => {

@@ -3,7 +3,7 @@ import { StyledSelect } from "./styles";
 import MenuItem from "@mui/material/MenuItem";
 import { SelectProps } from "@mui/material";
 import { currencies } from "../../currencies";
-import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContext";
+import { CurrencyContext } from "../../store/CurrencyContext/CurrencyContextProvider";
 import { CurrencySelectors } from "../../store/CurrencyContext/types";
 import { SelectChangeEvent } from "@mui/material";
 

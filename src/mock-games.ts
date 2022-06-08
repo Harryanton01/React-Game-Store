@@ -18,5 +18,5 @@ export const mockGame = {
 
 export const mockGameCart: GameCartType = {
   ...mockGame,
-  quantity: 3,
+  quantity: 2,
 };

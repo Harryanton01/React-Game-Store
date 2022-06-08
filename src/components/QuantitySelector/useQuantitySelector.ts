@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import { GameCartType } from "../shared/types/game";
-import { CartStoreContext } from "../store/CartStoreContext/CartStoreContext";
+import { GameCartType } from "../../shared/types/game";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 
 const useQuantitySelector = (game: GameCartType) => {
   const { addGame, removeGame, gameInCart, getGameQuantity } =

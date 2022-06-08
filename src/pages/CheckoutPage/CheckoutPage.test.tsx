@@ -9,8 +9,8 @@ import {
 import Theme from "../../styles/Theme";
 import CheckoutPage from "./CheckoutPage";
 import { BrowserRouter, Router } from "react-router-dom";
-import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyContext";
-import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContext";
+import { CurrencyContextProvider } from "../../store/CurrencyContext/CurrencyContextProvider";
+import { CartStoreContext } from "../../store/CartStoreContext/CartStoreContextProvider";
 import useHandleCart from "../../store/CartStoreContext/useHandleCart";
 import { createMemoryHistory } from "history";
 import axios from "axios";
@@ -71,17 +71,17 @@ const MockCheckoutPage = () => {
 };
 
 describe("CheckoutPage Tests", () => {
-  test("should display correct total order value and items regardless of quantity", async () => {
+  test("should display correct total order value component and total items component regardless of quantity value", async () => {
     render(<MockCheckoutPage />);
     const orderValue = screen.getByTestId("total-cart-amount");
     const totalItems = screen.getByTestId("total-cart-items");
     const quantityValue = screen.getByTestId("quantity-value");
     expect(orderValue).toHaveTextContent("43.00€");
-    expect(totalItems).toHaveTextContent("1");
+    expect(totalItems).toHaveTextContent("2");
     expect(quantityValue).toHaveTextContent("2");
   });
 
-  test("should update total order currency when selecting a new currency", async () => {
+  test("should update total order currency value component when selecting a new currency", async () => {
     mockedAxiosFn();
     render(<MockCheckoutPage />);
     const selectCurrencyElement = screen.getAllByRole("button");
@@ -94,7 +94,7 @@ describe("CheckoutPage Tests", () => {
     });
   });
 
-  test("should increment quantity and update order value", async () => {
+  test("should increment quantity value and update order value component", async () => {
     render(<MockCheckoutPage />);
     const incrementButton = screen.getByTestId("increment-quantity-button");
     const quantityValue = screen.getByTestId("quantity-value");
@@ -102,11 +102,11 @@ describe("CheckoutPage Tests", () => {
     const totalItems = screen.getByTestId("total-cart-items");
     fireEvent.click(incrementButton);
     expect(orderValue).toHaveTextContent("64.50€");
-    expect(totalItems).toHaveTextContent("1");
+    expect(totalItems).toHaveTextContent("3");
     expect(quantityValue).toHaveTextContent("3");
   });
 
-  test("should decrement quantity and update order value", async () => {
+  test("should decrement quantity value and update order value component", async () => {
     render(<MockCheckoutPage />);
     const decrementButton = screen.getByTestId("decrement-quantity-button");
     const quantityValue = screen.getByTestId("quantity-value");
@@ -131,7 +131,7 @@ describe("CheckoutPage Tests", () => {
     expect(quantityValue).not.toBeInTheDocument();
   });
 
-  test("should remove game from cart when clicking on the remove button", async () => {
+  test("should remove game from cart when clicking on the remove button component", async () => {
     render(<MockCheckoutPage />);
     const quantityValue = screen.getByTestId("quantity-value");
     const orderValue = screen.getByTestId("total-cart-amount");
@@ -145,7 +145,7 @@ describe("CheckoutPage Tests", () => {
     expect(quantityValue).not.toBeInTheDocument();
   });
 
-  test("should navigate back to game list page", () => {
+  test("should navigate back to game list page when clicking on back to overview button", () => {
     const history = createMemoryHistory();
     history.push = jest.fn();
     render(
